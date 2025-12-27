@@ -370,7 +370,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="text-2xl font-black text-primary mb-4 font-heading">MAXIM</h4>
+              <h4 className="text-2xl font-black text-primary mb-4 font-heading">MensDigest</h4>
               <p className="text-muted-foreground text-sm">
                 Мужской онлайн-журнал о стиле жизни, технологиях и культуре
               </p>
@@ -406,7 +406,7 @@ const Index = () => {
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2024 MAXIM. Все права защищены.</p>
+            <p>© 2024 MensDigest. Все права защищены.</p>
           </div>
         </div>
       </footer>
