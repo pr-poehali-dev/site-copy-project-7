@@ -137,7 +137,7 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-8">
-              <h1 className="text-3xl font-black text-primary font-heading">MAXIM</h1>
+              <h1 className="text-3xl font-black text-primary font-heading">MensDigest</h1>
               
               <nav className="hidden md:flex items-center space-x-6">
                 <a href="#" className="story-link text-foreground hover:text-primary transition-colors">
