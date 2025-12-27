@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -6,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const categories = [
@@ -197,7 +199,7 @@ const Index = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <section className="mb-16 relative overflow-hidden rounded-2xl group cursor-pointer hover-scale">
+        <section className="mb-16 relative overflow-hidden rounded-2xl group cursor-pointer hover-scale" onClick={() => navigate('/article/2')}>
           <div className="relative h-[500px] md:h-[600px]">
             <img
               src={heroArticle.image}
@@ -280,6 +282,7 @@ const Index = () => {
               <Card
                 key={article.id}
                 className="overflow-hidden hover-scale cursor-pointer group border-border"
+                onClick={() => navigate(`/article/${article.id}`)}
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
