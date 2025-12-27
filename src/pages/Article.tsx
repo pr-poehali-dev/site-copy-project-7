@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import Icon from '@/components/ui/icon';
+import Comments from '@/components/Comments';
 
 const Article = () => {
   const { id } = useParams();
@@ -347,6 +348,10 @@ const Article = () => {
         </div>
 
         <Separator className="my-8" />
+
+        <Comments articleId={article.id} />
+
+        <Separator className="my-12" />
 
         <section>
           <h3 className="text-2xl font-black mb-6 font-heading">Читайте также</h3>
