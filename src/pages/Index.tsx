@@ -9,6 +9,7 @@ import Icon from '@/components/ui/icon';
 const Index = () => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const categories = [
     { name: 'Развлечения', icon: 'Film' },
@@ -256,11 +257,18 @@ const Index = () => {
             {categories.map((category) => (
               <Card
                 key={category.name}
-                className="hover-scale cursor-pointer group border-border hover:border-primary transition-all"
+                className={`hover-scale cursor-pointer group border-border transition-all ${
+                  selectedCategory === category.name ? 'border-primary bg-primary/5' : 'hover:border-primary'
+                }`}
+                onClick={() => setSelectedCategory(selectedCategory === category.name ? null : category.name)}
               >
                 <CardContent className="p-6 flex flex-col items-center text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary transition-colors">
-                    <Icon name={category.icon} size={24} className="group-hover:text-primary-foreground transition-colors" />
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors ${
+                    selectedCategory === category.name ? 'bg-primary' : 'bg-muted group-hover:bg-primary'
+                  }`}>
+                    <Icon name={category.icon} size={24} className={`transition-colors ${
+                      selectedCategory === category.name ? 'text-primary-foreground' : 'group-hover:text-primary-foreground'
+                    }`} />
                   </div>
                   <span className="font-semibold">{category.name}</span>
                 </CardContent>
@@ -271,14 +279,18 @@ const Index = () => {
 
         <section id="articles" className="mb-16">
           <div className="flex items-center justify-between mb-8">
-            <h3 className="text-3xl font-black font-heading">Последние статьи</h3>
-            <Button variant="outline">
-              Все статьи
-              <Icon name="ArrowRight" size={18} className="ml-2" />
-            </Button>
+            <h3 className="text-3xl font-black font-heading">
+              {selectedCategory ? `${selectedCategory}` : 'Последние статьи'}
+            </h3>
+            {selectedCategory && (
+              <Button variant="outline" onClick={() => setSelectedCategory(null)}>
+                Все статьи
+                <Icon name="X" size={18} className="ml-2" />
+              </Button>
+            )}
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article) => (
+            {articles.filter((article) => !selectedCategory || article.category === selectedCategory).map((article) => (
               <Card
                 key={article.id}
                 className="overflow-hidden hover-scale cursor-pointer group border-border"
